@@ -1,0 +1,98 @@
+//Questão 1
+void main() {
+  int n1 = 1025;
+  int n2 = 23;
+  
+  var resto = n1 % n2;
+  var divisaoInteira = n1 ~/ n2;
+  var ehInteiro = n1 is int;
+  var naoEhInteiro = n1 is !int;
+  
+  print("Resto da divisao => $resto");
+  print("Divisão inteira => $divisaoInteira");
+  print("$n1 eh inteiro => $ehInteiro");
+  print("$n1 nao eh inteiro => $naoEhInteiro");
+}
+
+//-------------------------------------------------
+
+//Questão 2
+void main() {
+  String dia = "17";
+  String mes = "02";
+  String ano = "2022";
+  
+  
+  print("Data atual: $dia/$mes/$ano");
+}
+
+//-------------------------------------------------
+
+//Questão 3
+void main() {
+  print(r'O caractere de escape \t representa uma "tabulação".');
+}
+
+//-------------------------------------------------
+
+//Questão 4
+void main() {
+  double func1 = 1990.56;
+  double res1 = (func1 * 0.07) + func1;
+  
+  double func2 = 890.00;
+  double res2 = (func2 * 0.07) + func2;
+  
+  double func3 = 1060.34;
+  double res3 = (func3 * 0.07) + func3;
+  
+  print("Reajuste funcionário 1 => $res1");
+  print("Reajuste funcionário 2 => $res2");
+  print("Reajuste funcionário 3 => $res3");
+}
+//-------------------------------------------------
+
+//Questão 5
+//O resultado é 12.	
+
+//-------------------------------------------------
+
+//Questão 6
+void main() {
+  double nota1 = 7.1;
+  double nota2 = 9.0;
+  double nota3 = 4.3;
+  double media = (nota1 + nota2 + nota3) / 3;
+  
+  if (media >= 7) {
+    print("aprovado");
+  } else if(media >= 4 || media < 7) {
+    print("exame final");
+  } else {
+    print("reprovado");
+  }
+}
+
+//-------------------------------------------------
+
+//Questão 7
+void main() {
+  for(var i = 1; i <= 10; i++) {
+    var string = i.toString();
+    var ponto = '.' * i;
+    
+    print(ponto + string);
+  }
+}
+
+//-------------------------------------------------
+
+//Questão 8
+void main() {
+  var array = [1, 2, 3, 4, 5];
+  
+  array.forEach((numero) => print(numero * 2));
+}
+
+//Questão 9
+//Link: https://youtu.be/jziEjuW4S20
