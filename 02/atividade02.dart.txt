@@ -1,0 +1,124 @@
+//Questão 01
+void main() {
+  print(
+    somaArray([34, 67, 1, 3, 909])
+  );
+}
+
+int somaArray(List<int> arrayParam) {
+  int valor = 0;
+  for (int i = 0; i < arrayParam.length; i ++) {
+    valor += arrayParam[i];
+  }  
+  return valor;
+}
+
+//-------------------------------------------------------
+
+//Questão 02
+void main() {
+  print(
+    multiplicaArray([190, 11, 21, 546])
+  );
+}
+
+int multiplicaArray(List<int> arrayParam) {
+  int valor = 1;
+  for (int i = 0; i < arrayParam.length; i ++) {
+    valor *= arrayParam[i];
+  }
+  return valor;
+}
+
+//-------------------------------------------------------
+
+//Questão 03
+void main() {
+  printSoma([1, 2, 3], somaArray([1, 2, 3]));
+}
+
+int somaArray(List<int> arrayParam) {
+  int valor = 0;
+  for (int i = 0; i < arrayParam.length; i ++) {
+    valor += arrayParam[i];
+  }  
+  return valor;
+}
+
+void printSoma(List<int> array, int f) {
+  print(array);
+  print(f);
+}
+
+//-------------------------------------------------------
+
+//Questão 04
+import "dart:math";
+
+void main() {
+  print(funcaoTradicional(3, 2));
+  print(funcaoArrowFunction(3, 2));
+}
+
+int funcaoTradicional(int x, int y) {
+  int r = 1;
+  for (int i = 0; i < y; i++) {
+    r *= x;
+  }
+  return r;
+}
+
+num funcaoArrowFunction(int x, int y) => pow(x, y);
+
+//-------------------------------------------------------
+
+//Questão 05
+class Foguete {
+  void decolar() {
+    print('Iniciando decolagem em 3...2...1...');
+  }
+  
+  void error() {
+    print('Houston, temos um problema!');
+  }
+}
+
+class NaveEspacial extends Foguete {
+  String nome;
+  int codigoNave;
+  int ano;
+  DateTime _dataLancamento;
+  
+  NaveEspacial(this.nome, this.codigoNave, this.ano, this._dataLancamento) {
+    nome = nome;
+    codigoNave = codigoNave;
+    ano = ano;
+    _dataLancamento = _dataLancamento;
+  }
+  
+  NaveEspacial.segundoConstrutor(this.nome, this.codigoNave, this.ano, this._dataLancamento) {
+    print('Iniciando os motores...');
+  }
+  
+  set setNome(String n) {
+    nome = n;
+  }
+  
+  String get getNome {
+    return nome;
+  }
+}
+
+void main() {
+  //var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
+  NaveEspacial viagemEspacial = new NaveEspacial('Voyager I', 82839289, 1977, DateTime(1977, 9, 5));
+  NaveEspacial viagemTeste = new NaveEspacial.segundoConstrutor('Voyager X', 332435, 1999, DateTime(1999, 8, 3));
+  viagemEspacial.setNome = 'Saturn VI';
+  
+  print(viagemEspacial.getNome);
+  
+  viagemEspacial.decolar();
+}
+
+//Link para o video da questão acima
+//https://youtu.be/EsaZkh36-fE
