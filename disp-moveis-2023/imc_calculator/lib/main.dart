@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' show pow;
 
 void main() {
   runApp(const MyApp());
@@ -25,31 +26,45 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  final TextEditingController _alcoolValue = TextEditingController();
-  final TextEditingController _gasValue = TextEditingController();
+  final TextEditingController _controllerPeso = TextEditingController();
+  final TextEditingController _controllerAltura = TextEditingController();
 
-  var abastecimentoIdeal = '';
+  String imcResultado = '';
 
   double finalResult = 0;
 
-  void _calcular() {
+  void _calculate() {
     setState(() {
-      //var valorAlcool = double.parse(_alcoolValue.text);
-      //var valorGasolina = double.parse(_gasValue.text);
+      var peso = double.parse(_controllerPeso.text);
+      var altura = double.parse(_controllerAltura.text) * 0.01;
 
-      //finalResult = valorAlcool / valorGasolina * 100;
+      double imc = peso / pow(altura, 2);
 
-      finalResult =
-          (double.parse(_alcoolValue.text) / double.parse(_gasValue.text)) *
-              100.0;
-
-      if (finalResult >= 70) {
-        abastecimentoIdeal = "-> Abastecer com Alcool";
-      } else {
-        abastecimentoIdeal = "-> Abastecer com Gasolina";
+      if (imc < 18.6) {
+        imcResultado = 'Abaixo do peso';
+      } else if (imc > 18.7 && imc < 24.9) {
+        imcResultado = 'Peso ideal';
+      } else if (imc > 25 && imc < 29.9) {
+        imcResultado = 'Levemente acima do peso';
+      } else if (imc > 30 && imc < 34.9) {
+        imcResultado = 'Obesidade grau I';
+      } else if (imc > 35 && imc < 39.9) {
+        imcResultado = 'Obesidade grau II';
+      } else if (imc >= 40) {
+        imcResultado = 'Obesidade grau III';
       }
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Resultado => ${imc.toStringAsFixed(2)}'),
+          content: Center(
+            child: Text(imcResultado),
+          ),
+        ),
+      );
     });
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,25 +74,25 @@ class _MyHomeState extends State<MyHome> {
         title: const Text('IMC Calculator: '),
         centerTitle: true,
         backgroundColor: Colors.green,
-        actions: <Widget> [
+        actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {},
           ),
         ],
       ),
-       body: SingleChildScrollView(
+      body: SingleChildScrollView(
         //padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Z2YCMPrOwqdLwJ0aSRcuUG_pNollSjK6Pw&usqp=CAU',
-                width: 200,
-                height: 200,
-                ),
-              /*
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Image.network(
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Z2YCMPrOwqdLwJ0aSRcuUG_pNollSjK6Pw&usqp=CAU',
+              width: 200,
+              height: 200,
+            ),
+            /*
               const CircleAvatar(
                 radius: 50,
                 backgroundImage: NetworkImage(
@@ -86,55 +101,55 @@ class _MyHomeState extends State<MyHome> {
                 ),
               ),
               */
-              //Input 1
-              Container(
-                width: 300.0,
-                margin: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: _alcoolValue,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    //label: Text('teste: '),
-                    labelText: 'Peso (Kg): ',
-                    labelStyle: TextStyle(
+            //Input 1
+            Container(
+              width: 300.0,
+              margin: const EdgeInsets.all(10.0),
+              child: TextField(
+                controller: _controllerPeso,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  //label: Text('teste: '),
+                  labelText: 'Peso (Kg): ',
+                  labelStyle: TextStyle(
+                    color: Colors.green,
+                    //fontSize: 25.0,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 3,
                       color: Colors.green,
-                      //fontSize: 25.0,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 3,
-                        color: Colors.green,
-                      ),
                     ),
                   ),
                 ),
               ),
-       
+            ),
+
             // Input 2
             Container(
-                width: 300.0,
-                margin: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: _alcoolValue,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    //label: Text('teste: '),
-                    labelText: 'Altura (Cm): ',
-                    labelStyle: TextStyle(
+              width: 300.0,
+              margin: const EdgeInsets.all(10.0),
+              child: TextField(
+                controller: _controllerAltura,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  //label: Text('teste: '),
+                  labelText: 'Altura (Cm): ',
+                  labelStyle: TextStyle(
+                    color: Colors.green,
+                    //fontSize: 25.0,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 3,
                       color: Colors.green,
-                      //fontSize: 25.0,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 3,
-                        color: Colors.green,
-                      ),
                     ),
                   ),
                 ),
               ),
-       
-              /*
+            ),
+
+            /*
               Container(
                 width: 300.0,
                 margin: const EdgeInsets.all(10.0),
@@ -159,46 +174,44 @@ class _MyHomeState extends State<MyHome> {
               ),
               */
 
-              const SizedBox(),
+            const SizedBox(),
 
-              // Buttom
-              Container(
-                width: 300.0,
-                height: 50.0,
-                child: ElevatedButton(
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
-                    padding: MaterialStatePropertyAll(
-                      EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 15,
-                      ),
-                    ),
-                    
-                  ),
-                
-                  onPressed: _calcular,
-                  child: const Text(
-                    "Calcular",
-                    style: TextStyle(
-                      color: Colors.white,
-                      //fontSize: 25.0,
+            // Buttom
+            Container(
+              width: 300.0,
+              height: 50.0,
+              child: ElevatedButton(
+                style: const ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll<Color>(Colors.green),
+                  padding: MaterialStatePropertyAll(
+                    EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 15,
                     ),
                   ),
                 ),
-              ),
-       
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                      "Resultado: ${finalResult.toStringAsFixed(1)} $abastecimentoIdeal"
-                    ),
+                //onPressed: _calculate,
+                onPressed: _calculate,
+                child: const Text(
+                  "Calcular",
+                  style: TextStyle(
+                    color: Colors.white,
+                    //fontSize: 25.0,
+                  ),
                 ),
               ),
-            ],
-          ),
-       ),
+            ),
+
+            const Center(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text('Pressione o botão acima para ver o resultado'),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
