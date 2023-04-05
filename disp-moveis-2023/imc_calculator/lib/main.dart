@@ -66,6 +66,13 @@ class _MyHomeState extends State<MyHome> {
     });
   }
 
+  void _clearField() {
+    setState(() {
+      _controllerPeso.clear();
+      _controllerAltura.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +84,7 @@ class _MyHomeState extends State<MyHome> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: () {},
+            onPressed: _clearField,
           ),
         ],
       ),
