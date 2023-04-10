@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 // Esta classe é responsável por definir 
 // as propriedades da imagem da tela incial.
 class ImageHomeView extends StatelessWidget {
