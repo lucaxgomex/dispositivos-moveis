@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class PessoaController{
   PessoaModel criarPessoa(String nome, String email){
     PessoaModel pessoa = PessoaModel(nome, email);

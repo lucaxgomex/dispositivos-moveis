@@ -18,18 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      /*
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      */
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: Colors.black, secondary: Colors.green)),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      //routes: <String, WidgetBuilder>{
-      //  "/perfil": (BuildContext context) => const Perfil(),
-      //}
       routes: {
         'home': (context) => const HomeView(),
         'details': (context) => const DetalhesView(),
