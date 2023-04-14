@@ -3,7 +3,6 @@ import 'views/my_home_page_view.dart';
 
 import 'package:flutter/material.dart';
 
-
 import 'package:app_perfil_usuario/views/detalhes/detalhes_view.dart';
 import 'package:app_perfil_usuario/views/home/home_view.dart';
 
