@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../views/my_home_page_view.dart';
-
-import 'package:app_perfil_usuario/model/pessoa_model.dart';
+import '../views/form.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,17 +9,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //routes: <String, WidgetBuilder>{
+      //  "/perfil": (BuildContext context) => const Perfil(),
+      //}
     );
-  }
-}
-
-class PessoaController{
-  PessoaModel criarPessoa(String nome, String email){
-    PessoaModel pessoa = PessoaModel(nome, email);
-    return pessoa;
   }
 }
