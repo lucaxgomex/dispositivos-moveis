@@ -147,6 +147,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
             ),
+            
             SizedBox(
               width: 300.0,
               height: 50.0,
