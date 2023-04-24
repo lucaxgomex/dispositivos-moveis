@@ -1,12 +1,22 @@
-import '../models/pessoa_model.dart';
+import 'package:flutter/material.dart';
+import '../views/login.dart';
 
-class LoginController {
-  bool login(User user) {
-    // Verificar se o usuário existe no sistema
-    if (user.username == 'user@example.com' && user.password == '123') {
-      return true;
-    } else {
-      return false;
-    }
+class LoginController extends StatelessWidget {
+  const LoginController({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'User List',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginView(),
+      },
+    );
   }
 }

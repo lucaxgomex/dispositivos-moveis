@@ -1,0 +1,1 @@
+List<Map<String, dynamic>> listaDados = await db.Query('tabela');

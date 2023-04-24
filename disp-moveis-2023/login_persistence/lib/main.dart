@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'views/login.dart';
+import 'controllers/login_controller.dart';
 
 void main() {
-  runApp(const LoginView());
+  runApp(const LoginController());
 }

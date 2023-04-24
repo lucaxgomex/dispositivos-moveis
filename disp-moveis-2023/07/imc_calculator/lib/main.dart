@@ -94,20 +94,14 @@ class _MyHomeState extends State<MyHome> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.network(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Z2YCMPrOwqdLwJ0aSRcuUG_pNollSjK6Pw&usqp=CAU',
-              width: 200,
-              height: 200,
-            ),
-            /*
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage(
-                  scale: 1000.0,
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Z2YCMPrOwqdLwJ0aSRcuUG_pNollSjK6Pw&usqp=CAU',
-                ),
+            const CircleAvatar(
+              radius: 50,
+              backgroundImage: NetworkImage(
+                scale: 1000.0,
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Z2YCMPrOwqdLwJ0aSRcuUG_pNollSjK6Pw&usqp=CAU',
               ),
-              */
+            ),
+
             //Input 1
             Container(
               width: 300.0,
