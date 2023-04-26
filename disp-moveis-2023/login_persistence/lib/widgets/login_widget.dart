@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/pessoa_model.dart';
+import '../data/my_database.dart';
 //import '../views/home_view.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -27,28 +28,13 @@ class _LoginWidgetState extends State<LoginWidget> {
       _controllerPassword.text
     );
 
+    await DBClass.insert(
+      newUser.username, 
+      newUser.email, 
+      newUser.description, 
+      newUser.password
+    );
   }
-
-  /*
-
-  Future<void> _cadastro() async {
-      PessoaModel novaPessoa = PessoaModel(
-          _textEditingControllerPessoaNome.text,
-          _textEditingControllerPessoaEmail.text,
-          _textEditingControllerPessoaSenha.text);
-
-      await SQLHelper.createPessoa(
-          novaPessoa.nome, novaPessoa.email, novaPessoa.senha);
-
-      Navigator.push(
-        context,
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) => ListaPessoaView(),
-        ),
-      );
-    }
-
-  */
 
   @override
   Widget build(BuildContext context) {
