@@ -40,11 +40,12 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
-      child: Form(
+      child: SingleChildScrollView(
         key: _formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
             Container(
               width: 300.0,
               margin: const EdgeInsets.all(10.0),
@@ -116,10 +117,11 @@ class _LoginWidgetState extends State<LoginWidget> {
               margin: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: _controllerPassword,
+                obscureText: true,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   //label: Text('teste: '),
-                  labelText: 'Peso (Kg): ',
+                  labelText: 'Password: ',
                   labelStyle: TextStyle(
                     color: Colors.green,
                     //fontSize: 25.0,
@@ -161,6 +163,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             ),
           ],
         ),
+
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../views/login.dart';
+import '../views/list.dart';
 
 class LoginController extends StatelessWidget {
   const LoginController({super.key});
@@ -10,12 +12,12 @@ class LoginController extends StatelessWidget {
       title: 'User List',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity
-      ),
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity),
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginView(),
+        '/list-data': (context) => const ListDataView(),
       },
     );
   }
