@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/login_widget.dart';
+import '../widgets/list_widget.dart';
 
 class ListDataView extends StatelessWidget {
   const ListDataView({super.key});
@@ -10,7 +10,7 @@ class ListDataView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Cadastro')
       ),
-      body: const LoginWidget(),
+      body: const ListWidget(),
     );
   }
 }

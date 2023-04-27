@@ -38,13 +38,17 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
+    return Center(
+
+      //padding: const EdgeInsets.all(15.0),
       child: SingleChildScrollView(
         key: _formKey,
+
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
           children: <Widget>[
             Container(
               width: 300.0,
