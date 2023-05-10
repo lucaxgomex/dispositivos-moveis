@@ -58,12 +58,41 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(-5.089464014176947, -42.810043131713556);
+  //MapType _currentMapType = MapType.normal;
+
+  Set<Marker> _marcadores = {};
+  
+  _carregarMarcadores() {
+    Set<Marker> marcadoresLocal = {};
+    
+    Marker marcadoIfpi = const Marker(
+      markerId: MarkerId('IFPI'),
+      position: LatLng(-5.088544046019581, -42.81123803149089),
+    );
+
+    Marker marcadoIfpiSul = const Marker(
+      markerId: MarkerId('IFPI'),
+      position: LatLng(-5.101723, -42.813114),
+    );
+
+    marcadoresLocal.add(marcadoIfpi);
+    marcadoresLocal.add(marcadoIfpiSul);
+    setState(() {
+      _marcadores = marcadoresLocal;
+    });
+ }
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
   @override
+  void initState() {
+    super.initState();
+    _carregarMarcadores();
+  }
+  
+  // ignore: annotate_overrides
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -82,12 +111,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: GoogleMap(
+        myLocationEnabled: true,
+        mapType: MapType.satellite,
+        initialCameraPosition: CameraPosition(target: _center, zoom: 14.0),
         onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 14.0
-        ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+        markers: _marcadores,
+      ),
     );
   }
 }
