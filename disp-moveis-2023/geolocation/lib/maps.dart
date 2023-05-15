@@ -67,17 +67,17 @@ class _MapRenderState extends State<MapRender> {
   _carregarMarcadores() {
     Set<Marker> marcadoresLocal = {};
 
-    Marker marcadoIfpi = const Marker(
-      markerId: MarkerId('IFPI'),
-      position: LatLng(-5.088544046019581, -42.81123803149089),
+    Marker marcadoUfpi = const Marker(
+      markerId: MarkerId('UFPI'),
+      position: LatLng(-5.0568472050861395, -42.79808706149515),
     );
 
     Marker marcadoIfpiSul = const Marker(
-      markerId: MarkerId('IFPI'),
+      markerId: MarkerId('IFPI Sul'),
       position: LatLng(-5.101723, -42.813114),
     );
 
-    marcadoresLocal.add(marcadoIfpi);
+    marcadoresLocal.add(marcadoUfpi);
     marcadoresLocal.add(marcadoIfpiSul);
 
     setState(() {
@@ -90,10 +90,14 @@ class _MapRenderState extends State<MapRender> {
   }
 
   localizacaoAtual() async {
+    await Geolocator.requestPermission();
+
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    print('Localizacao ' + position.toString());
+    print(
+        'Localizacao *****************************************************************' +
+            position.toString());
   }
 
   @override
@@ -123,8 +127,11 @@ class _MapRenderState extends State<MapRender> {
       ),
       body: GoogleMap(
         myLocationEnabled: true,
-        mapType: MapType.satellite,
-        initialCameraPosition: CameraPosition(target: _center, zoom: 14.0),
+        mapType: MapType.normal,
+        initialCameraPosition: CameraPosition(
+          target: _center, 
+          zoom: 18.0
+        ),
         onMapCreated: _onMapCreated,
         markers: _marcadores,
       ),
